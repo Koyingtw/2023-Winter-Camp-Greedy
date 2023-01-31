@@ -266,6 +266,14 @@
         \begin{block}{\href{https://cses.fi/problemset/task/1643}{CSES Maximum Subarray Sum}}
             求最大子陣列和
         \end{block}
+
+        \begin{itemize}
+            \item<1-> 還記得區間和怎麼算嗎？
+            \item<2-> $\displaystyle\sum_{i = l}^{r}{a_i} = psum_{r} - psum{l - 1}$ 
+            \item<3-> 對於 $r$ 為結尾的最大子陣列和，顯然就是一個最小的 $psum_{i}$ 滿足 $i < r$
+            \item<4-> 那麼對於整個陣列的最大子陣列和，答案就是 
+            $\displaystyle\max_{r = 1}^{n}(psum_{r} - \max_{i = 1}^{r - 1}(i))$
+        \end{itemize}
     \end{frame}
 
     \begin{frame}{線段貪心}
@@ -461,7 +469,7 @@
         \begin{itemize}
             \item<1-> 這 $n$ 本書中一定有其中一本書 $i$ 是需要花最久時間的，此時會有兩種情況
             \begin{enumerate}
-                \item<2-> $t_i \le \sum{t} - t_i$ 
+                \item<2-> $t_i \ge \sum{t} - t_i$ 
                 \item<2-> $t_i < \sum{t} - t_i$
             \end{enumerate}
             \item<3-> 第一種情況代表任意一人在讀第 $i$ 本書的期間，另一人可以將其他書全部看完，因此答案 $= 2t_i$
